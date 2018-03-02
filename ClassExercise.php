@@ -32,7 +32,7 @@ class Prime {
 				}
 			}	
 			if  (($sum+1) == $q){
-				$perfects[$q] = true;
+				$this->perfects[$q] = true;
 			}
 		}
 		return;
@@ -63,8 +63,6 @@ class Prime {
 
 function prep_table($file_arr, $param_arr) {
 	$prime = new Prime($param_arr[1]);
-
-	//var_dump($prime);
 
 	unset($file_arr[0]);
 	sort($file_arr, SORT_NUMERIC);
