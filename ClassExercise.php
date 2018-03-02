@@ -38,13 +38,13 @@ class Prime {
 		return;
 	}
 	public function isPrime($n) {
-		// return ( array_key_exists($n, $this->primes) ? $this->primes[$n] : false);
-        return $this->primes[$n];
+		return ( array_key_exists($n, $this->primes) ? $this->primes[$n] : false);
+        //return $this->primes[$n];
 	}
 	
 	public function isPerfect($n) {
-        // return ( array_key_exists($n, $this->perfects) ? $this->perfects[$n] : false);
-        return $this->perfects[$n];
+        return ( array_key_exists($n, $this->perfects) ? $this->perfects[$n] : false);
+        //return $this->perfects[$n];
 	}
 	
 	public function printPrime() {
@@ -63,6 +63,9 @@ class Prime {
 
 function prep_table($file_arr, $param_arr) {
 	$prime = new Prime($param_arr[1]);
+
+	//var_dump($prime);
+
 	unset($file_arr[0]);
 	sort($file_arr, SORT_NUMERIC);
 	$table_html = "";
@@ -72,7 +75,10 @@ function prep_table($file_arr, $param_arr) {
 		$table_html .= "<tr>" . PHP_EOL;
 		for($j = 1; $j <= 10; $j++) {
 			if ($k <= ($param_arr[0] - 1)) {
-				$prime_color_spec = $prime->isPrime($file_arr[$k]) ? "bgcolor=\"$param_arr[2]\"" : ($prime->isPerfect($file_arr[$k]) ? "bgcolor=\"$param_arr[3]\"" : "bgcolor=\"$param_arr[4]\"");
+				$number = trim($file_arr[$k]);
+				$is_prime = $prime->isPrime($number);
+				$is_perfect = $prime->isPerfect($number);
+				$prime_color_spec = $is_prime ? "bgcolor=\"$param_arr[2]\"" : ($is_perfect ? "bgcolor=\"$param_arr[3]\"" : "bgcolor=\"$param_arr[4]\"");
 				$table_html .= "<td $prime_color_spec class=\"table-cell-style\">$file_arr[$k]</td>" . PHP_EOL;
 			}
 			else {
