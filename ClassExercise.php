@@ -39,12 +39,12 @@ class Prime {
 	}
 	public function isPrime($n) {
 		// return ( array_key_exists($n, $this->primes) ? $this->primes[$n] : false);
-        return $this->primes[$n]
+        return $this->primes[$n];
 	}
 	
 	public function isPerfect($n) {
         // return ( array_key_exists($n, $this->perfects) ? $this->perfects[$n] : false);
-        return $this->perfects[$n]
+        return $this->perfects[$n];
 	}
 	
 	public function printPrime() {
